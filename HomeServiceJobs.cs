@@ -8,14 +8,15 @@ namespace CSharpProgramming101
     {
 
         public string Name { get; set; }
-        public double TimeInHours { get; set; }
-        public  double Rate { get; set; }
 
+
+        private double timeInHours;
+        private double rate;
         private double totalFeeForJob;
 
         public HomeServiceJobs(string name, double timeInHours, double rate)
         {
-            this.Name = name;
+            Name = name;
             TimeInHours = timeInHours;
             Rate = rate;
         }
@@ -32,7 +33,35 @@ namespace CSharpProgramming101
 
         private void calcTotalFee()
         {
-            totalFeeForJob
+            totalFeeForJob = timeInHours * rate;
+        }
+
+        public double TimeInHours 
+        { 
+            get
+            {
+                return timeInHours;
+            }
+            set
+            {
+                timeInHours = value;
+                calcTotalFee();
+            }
+         }
+
+        public double Rate 
+        {
+            get
+            {
+                return rate;
+            }
+
+            set
+            {
+                rate = value;
+                calcTotalFee();
+            }
+           
         }
     }
 }
